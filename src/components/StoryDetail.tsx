@@ -108,7 +108,7 @@ const StoryDetail = () => {
   }
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[var(--vintage-brown-dark)] text-[var(--vintage-cream)]">
+    <div ref={containerRef} className="relative min-h-screen bg-[var(--vintage-brown-dark)] text-[var(--vintage-cream)] overflow-x-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[color:rgba(161,92,56,0.1)] blur-3xl rounded-full floating-particle" />
@@ -127,17 +127,17 @@ const StoryDetail = () => {
         </button>
       </div>
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div className="container mx-auto px-6 pb-6">
+        <div className="min-h-[calc(100vh-96px)] grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Left Side - Main Image */}
-          <div className="story-image">
-            <div className="relative group">
+          <div className="story-image h-full">
+            <div className="relative group h-full">
               <div className="absolute inset-0 bg-gradient-to-r from-[color:rgba(161,92,56,0.2)] to-[color:rgba(201,162,39,0.2)] rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-[color:rgba(27,20,15,0.9)] backdrop-blur-lg rounded-2xl p-4 border border-[color:rgba(161,92,56,0.3)] group-hover:border-[color:rgba(201,162,39,0.5)] transition-all duration-500 shadow-2xl">
+              <div className="relative h-full bg-[color:rgba(27,20,15,0.9)] backdrop-blur-lg rounded-2xl p-4 border border-[color:rgba(161,92,56,0.3)] group-hover:border-[color:rgba(201,162,39,0.5)] transition-all duration-500 shadow-2xl">
                 <img 
                   src={story.src} 
                   alt={story.alt}
-                  className="w-full h-96 object-cover rounded-xl shadow-lg"
+                  className="w-full h-full object-cover rounded-xl shadow-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent rounded-xl"></div>
                 <div className="absolute bottom-4 left-4 right-4">
@@ -150,7 +150,7 @@ const StoryDetail = () => {
           </div>
 
           {/* Right Side - Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 h-full overflow-y-auto overflow-x-hidden pr-1">
             {/* Title */}
             <div className="story-element">
               <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--vintage-tan)] via-[var(--vintage-gold)] to-[var(--vintage-tan)] bg-clip-text text-transparent mb-4">

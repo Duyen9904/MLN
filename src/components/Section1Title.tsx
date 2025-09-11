@@ -74,7 +74,7 @@ const Section1Title = ({ sectionRef }: Section1TitleProps) => {
   }, [sectionRef]);
 
   return (
-    <section ref={sectionRef} className="relative z-10 text-center py-20 px-6">
+    <section ref={sectionRef} className="relative z-10 text-center py-20 px-6 min-h-screen flex items-center justify-center">
       <div ref={containerRef}>
         <h2 className="section1-text text-4xl md:text-5xl font-bold text-red-400 mb-6 section-title leading-tight">
           I. Đặc điểm của giai cấp công nhân Việt Nam

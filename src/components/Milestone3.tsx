@@ -172,11 +172,11 @@ const Milestone3 = ({ sectionRef }: Milestone3Props) => {
                   </div>
                 </div>
                 
-                <div className="relative overflow-hidden rounded-xl">
+                <div className="relative overflow-hidden rounded-xl h-80">
                   <img 
                     src={giaidoan3} 
                     alt="Giai đoạn 3 - 35 năm đổi mới"
-                    className="w-full h-80 object-cover rounded-xl shadow-lg"
+                    className="w-full h-full object-cover rounded-xl shadow-lg"
                   />
                   <a
                     href="https://www.phunuonline.com.vn/khi-nha-may-theo-cong-nhan-ve-tinh-a1459797.html"
@@ -187,12 +187,13 @@ const Milestone3 = ({ sectionRef }: Milestone3Props) => {
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent rounded-xl"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-[var(--vintage-cream)] text-sm font-medium bg-[color:rgba(27,20,15,0.5)] backdrop-blur-sm rounded-lg px-3 py-2">
-                    Công cuộc đổi mới và phát triển
-                  </p>
+                  {/* Overlays inside the clipped container */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent pointer-events-none rounded-xl"></div>
+                  <div className="absolute bottom-2 left-4 right-4 pointer-events-none">
+                    <p className="text-[var(--vintage-cream)] text-sm font-medium bg-[color:rgba(27,20,15,0.5)] backdrop-blur-sm rounded-lg px-3 py-2">
+                      Công cuộc đổi mới và phát triển
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Cog, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { BookOpen, Cog, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, ExternalLink, Share2 } from 'lucide-react';
 import khaithacthanGd1 from '../assets/khaithacthan-gd1.jpg';
 import nhamaydetnamdinh from '../assets/nhamaydetnamdinh.jpg';
 
@@ -170,7 +170,38 @@ const Milestone1 = ({ sectionRef }: Milestone1Props) => {
   };
 
   const handleImageClick = (imageId: string) => {
-    navigate(`/story/${imageId}`);
+    navigate(`/story/${imageId}` as never, { state: { from: 'home', scrollY: window.scrollY } } as never);
+  };
+
+  const shareCurrentImage = async () => {
+    try {
+      const current = images[currentImageIndex];
+      const shareUrl = `${window.location.origin}/story/${current.id}`;
+      const shareData = {
+        title: current.alt,
+        text: current.caption,
+        url: shareUrl
+      };
+      if (navigator.share) {
+        await navigator.share(shareData as ShareData);
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(shareUrl);
+        alert('Link copied to clipboard');
+      } else {
+        // Fallback
+        const tempInput = document.createElement('input');
+        tempInput.value = shareUrl;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        alert('Link copied to clipboard');
+      }
+    } catch (err) {
+      // Non-fatal: ignore cancel or show minimal notice
+      // eslint-disable-next-line no-console
+      console.warn('Share failed or canceled', err);
+    }
   };
   
   return (
@@ -206,17 +237,17 @@ const Milestone1 = ({ sectionRef }: Milestone1Props) => {
                 </div>
                 
                 {/* Image Carousel */}
-                <div className="relative overflow-hidden rounded-xl">
+                <div className="relative overflow-hidden rounded-xl h-80">
                   <div 
-                    className="flex transition-transform duration-500 ease-in-out"
+                    className="flex h-full transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
                   >
                     {images.map((image, index) => (
-                      <div key={index} className="relative w-full flex-shrink-0">
+                      <div key={index} className="relative w-full h-full flex-shrink-0 group">
                         <img 
                           src={image.src} 
                           alt={image.alt}
-                          className="w-full h-80 object-cover shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
                           onClick={() => handleImageClick(image.id)}
                         />
                         {image.imageUrl && (
@@ -230,6 +261,22 @@ const Milestone1 = ({ sectionRef }: Milestone1Props) => {
                             <ExternalLink className="w-4 h-4" />
                           </a>
                         )}
+                        {/* Share current story */}
+                        <button
+                          type="button"
+                          onClick={shareCurrentImage}
+                          className="absolute top-3 left-3 z-30 p-2 rounded-full bg-[color:rgba(27,20,15,0.6)] hover:bg-[color:rgba(27,20,15,0.8)] text-[var(--vintage-cream)] shadow-md transition-colors"
+                          title="Chia sẻ câu chuyện"
+                        >
+                          <Share2 className="w-4 h-4" />
+                        </button>
+
+                        {/* Click to learn more indicator */}
+                        <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 z-20">
+                          <div className="px-3 py-1 rounded-full bg-[color:rgba(27,20,15,0.6)] text-[var(--vintage-cream)] text-xs font-medium shadow-md opacity-90 group-hover:opacity-100 transition-opacity">
+                            Nhấn để xem chi tiết
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -260,13 +307,14 @@ const Milestone1 = ({ sectionRef }: Milestone1Props) => {
                       />
                     ))}
                   </div>
-                </div>
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent rounded-xl pointer-events-none"></div>
-                <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-                  <p className="text-[var(--vintage-cream)] text-sm font-medium bg-[color:rgba(27,20,15,0.5)] backdrop-blur-sm rounded-lg px-3 py-2">
-                    {images[currentImageIndex].caption}
-                  </p>
+                  
+                  {/* Overlays inside the clipped container */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent pointer-events-none"></div>
+                  <div className="absolute bottom-2 left-4 right-4 pointer-events-none">
+                    <p className="text-[var(--vintage-cream)] text-sm font-medium bg-[color:rgba(27,20,15,0.5)] backdrop-blur-sm rounded-lg px-3 py-2">
+                      {images[currentImageIndex].caption}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

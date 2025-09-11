@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from './components/Header';
@@ -14,6 +14,7 @@ import Conclusion from './components/Conclusion';
 import Review from './components/Review';
 import Footer from './components/Footer';
 import StoryDetail from './components/StoryDetail';
+import NextSectionButton from './components/NextSectionButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,19 +46,20 @@ const App = () => {
               { 
                 y: 100, 
                 opacity: 0.8,
-                scale: 0.95
+                // Avoid scaling the whole section to prevent visual height shrink
               },
               {
                 y: 0,
                 opacity: 1,
-                scale: 1,
                 duration: 1.2,
                 ease: "power2.out",
                 scrollTrigger: {
                   trigger: section,
                   start: "top 90%",
                   end: "bottom 10%",
-                  toggleActions: "play none none reverse"
+                  // Keep the section state after it has expanded
+                  toggleActions: "play none none none",
+                  once: true
                 }
               }
             );
@@ -110,19 +112,19 @@ const App = () => {
           gsap.fromTo(section,
             { 
               opacity: 0,
-              y: 150,
-              scale: 0.9
+              y: 150
             },
             {
               opacity: 1,
               y: 0,
-              scale: 1,
               duration: 1.5,
               ease: "power2.out",
               scrollTrigger: {
                 trigger: section,
                 start: "top 85%",
-                toggleActions: "play none none reverse"
+                // Do not reverse to avoid any collapse effect
+                toggleActions: "play none none none",
+                once: true
               }
             }
           );
@@ -153,7 +155,19 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const HomePage = () => (
+  const HomePage = () => {
+    const location = useLocation();
+    useEffect(() => {
+      const state = location.state as { scrollY?: number } | null;
+      if (state && typeof state.scrollY === 'number') {
+        // Restore after a tick to ensure layout is ready
+        setTimeout(() => {
+          window.scrollTo({ top: state.scrollY, left: 0, behavior: 'instant' as ScrollBehavior });
+        }, 0);
+      }
+    }, [location.state]);
+
+    return (
     <div ref={containerRef} className="min-h-screen bg-gradient-to-b from-[var(--vintage-brown-dark)] via-[var(--vintage-brown)] to-[var(--vintage-brown-dark)] text-[var(--vintage-cream)] overflow-x-hidden relative">
       {/* Header */}
       <Header />
@@ -178,12 +192,18 @@ const App = () => {
         <Milestone3 sectionRef={milestone3Ref} />
         <Section2 sectionRef={section2Ref} />
         <Section3 sectionRef={section3Ref} />
-        <Conclusion sectionRef={conclusionRef} />
+        <Conclusion sectionRef={conclusionRef
+
+        } />
+        
         <Review sectionRef={reviewRef} />
+        
         <Footer />
+        {/* <NextSectionButton /> */}
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <Router>

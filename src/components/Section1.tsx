@@ -417,7 +417,7 @@ const Section1 = ({ sectionRef }: Section1Props) => {
   };
 
   return (
-    <section ref={sectionRef} className="relative">
+    <section ref={sectionRef} className="relative min-h-screen">
       {/* Section Title - At beginning of section */}
       <div className="relative z-10 text-center py-20 px-6">
         <h2 className="section1-text text-4xl md:text-5xl font-bold text-red-400 mb-6 section-title leading-tight">

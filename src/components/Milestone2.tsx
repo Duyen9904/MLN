@@ -171,7 +171,7 @@ const Milestone2 = ({ sectionRef }: Milestone2Props) => {
   };
 
   const handleImageClick = (imageId: string) => {
-    navigate(`/story/${imageId}`);
+    navigate(`/story/${imageId}` as never, { state: { from: 'home', scrollY: window.scrollY } } as never);
   };
 
   return (
@@ -243,17 +243,17 @@ const Milestone2 = ({ sectionRef }: Milestone2Props) => {
                 </div>
                 
                 {/* Image Carousel */}
-                <div className="relative overflow-hidden rounded-xl">
+                <div className="relative overflow-hidden rounded-xl h-80">
                   <div 
-                    className="flex transition-transform duration-500 ease-in-out"
+                    className="flex h-full transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
                   >
                     {images.map((image, index) => (
-                      <div key={index} className="relative w-full flex-shrink-0">
+                      <div key={index} className="relative w-full h-full flex-shrink-0">
                         <img 
                           src={image.src} 
                           alt={image.alt}
-                          className="w-full h-80 object-cover shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
                           onClick={() => handleImageClick(image.id)}
                         />
                         {image.imageUrl && (
@@ -297,13 +297,14 @@ const Milestone2 = ({ sectionRef }: Milestone2Props) => {
                       />
                     ))}
                   </div>
-                </div>
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent rounded-xl pointer-events-none"></div>
-                <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-                  <p className="text-[var(--vintage-cream)] text-sm font-medium bg-[color:rgba(27,20,15,0.5)] backdrop-blur-sm rounded-lg px-3 py-2">
-                    {images[currentImageIndex].caption}
-                  </p>
+                  
+                  {/* Overlays inside the clipped container */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color:rgba(27,20,15,0.6)] via-transparent to-transparent pointer-events-none"></div>
+                  <div className="absolute bottom-2 left-4 right-4 pointer-events-none">
+                    <p className="text-[var(--vintage-cream)] text-sm font-medium bg-[color:rgba(27,20,15,0.5)] backdrop-blur-sm rounded-lg px-3 py-2">
+                      {images[currentImageIndex].caption}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
