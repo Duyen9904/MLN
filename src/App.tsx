@@ -14,12 +14,15 @@ import Conclusion from './components/Conclusion';
 import Review from './components/Review';
 import Footer from './components/Footer';
 import StoryDetail from './components/StoryDetail';
+import AIUsage from './components/AIUsage';
+import OpeningActivity from './components/OpeningActivity';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const section1TitleRef = useRef<HTMLElement | null>(null);
+  const openingRef = useRef<HTMLElement | null>(null);
   const milestone1Ref = useRef<HTMLElement | null>(null);
   const milestone2Ref = useRef<HTMLElement | null>(null);
   const milestone3Ref = useRef<HTMLElement | null>(null);
@@ -27,6 +30,7 @@ const App = () => {
   const section3Ref = useRef<HTMLElement | null>(null);
   const conclusionRef = useRef<HTMLElement | null>(null);
   const reviewRef = useRef<HTMLElement | null>(null);
+  const aiUsageRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     // Add a small delay to ensure refs are set
@@ -36,7 +40,7 @@ const App = () => {
         gsap.set("html", { scrollBehavior: "smooth" });
 
         // Global parallax effects for all sections
-        const sections = [section1TitleRef.current, milestone1Ref.current, milestone2Ref.current, milestone3Ref.current, section2Ref.current, section3Ref.current, conclusionRef.current, reviewRef.current];
+        const sections = [section1TitleRef.current, openingRef.current, milestone1Ref.current, milestone2Ref.current, milestone3Ref.current, section2Ref.current, section3Ref.current, conclusionRef.current, reviewRef.current, aiUsageRef.current];
         
         sections.forEach((section, sectionIndex) => {
           if (section) {
@@ -185,6 +189,7 @@ const App = () => {
       </div>
       <div className="pt-20">
         <Hero />
+        <OpeningActivity sectionRef={openingRef} />
         <Section1Title sectionRef={section1TitleRef} />
         <Milestone1 sectionRef={milestone1Ref} />
         <Milestone2 sectionRef={milestone2Ref} />
@@ -196,6 +201,7 @@ const App = () => {
         } />
         
         <Review sectionRef={reviewRef} />
+        <AIUsage sectionRef={aiUsageRef} />
         
         <Footer />
         {/* <NextSectionButton /> */}

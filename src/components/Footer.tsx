@@ -11,6 +11,11 @@ const Footer = () => {
           <Globe className="w-5 h-5" />
           <Star className="w-5 h-5" />
         </div>
+        <div className="mt-6">
+          <a href="#ai-usage" className="inline-block px-4 py-2 border border-[color:rgba(166,124,82,0.45)] rounded-lg text-[var(--vintage-cream)] hover:text-[var(--vintage-gold)] hover:border-[var(--vintage-gold)] transition-colors">
+            Xem phụ lục: Sử dụng AI
+          </a>
+        </div>
       </div>
     </footer>
   );
