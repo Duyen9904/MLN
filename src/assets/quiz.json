@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Giai cấp công nhân Việt Nam ra đời trong bối cảnh lịch sử nào?",
+    "options": [
+      "Sau khi đất nước giành độc lập năm 1945",
+      "Gắn liền với chính sách khai thác thuộc địa của thực dân Pháp",
+      "Khi công cuộc đổi mới bắt đầu năm 1986",
+      "Sau khi cuộc Cách mạng công nghiệp lần thứ tư bùng nổ"
+    ],
+    "answer": "Gắn liền với chính sách khai thác thuộc địa của thực dân Pháp"
+  },
+  {
+    "question": "Đặc điểm nổi bật của giai cấp công nhân Việt Nam so với công nhân ở các nước tư bản phát triển là gì?",
+    "options": [
+      "Xuất hiện muộn hơn và gắn với quá trình công nghiệp hóa trong nước",
+      "Xuất hiện đồng thời với giai cấp tư sản dân tộc",
+      "Xuất hiện trước giai cấp tư sản dân tộc và trực tiếp chống thực dân, phong kiến",
+      "Xuất hiện từ thời phong kiến để xây dựng các làng nghề truyền thống"
+    ],
+    "answer": "Xuất hiện trước giai cấp tư sản dân tộc và trực tiếp chống thực dân, phong kiến"
+  },
+  {
+    "question": "Một trong những nội dung kinh tế quan trọng trong sứ mệnh lịch sử của giai cấp công nhân Việt Nam là gì?",
+    "options": [
+      "Bảo vệ chế độ xã hội chủ nghĩa trước các thế lực thù địch",
+      "Xây dựng khối đại đoàn kết toàn dân tộc",
+      "Nâng cao năng suất lao động, chất lượng và hiệu quả sản xuất",
+      "Phát triển nền văn hóa Việt Nam tiên tiến, đậm đà bản sắc dân tộc"
+    ],
+    "answer": "Nâng cao năng suất lao động, chất lượng và hiệu quả sản xuất"
+  },
+  {
+    "question": "Trong phương hướng xây dựng giai cấp công nhân hiện nay, giải pháp đột phá để phát triển nguồn nhân lực chất lượng cao là gì?",
+    "options": [
+      "Xây dựng Đảng trong sạch, vững mạnh",
+      "Đào tạo, bồi dưỡng, trí thức hóa giai cấp công nhân",
+      "Tăng cường khối liên minh công – nông – trí thức",
+      "Phát huy sức mạnh đại đoàn kết toàn dân tộc"
+    ],
+    "answer": "Đào tạo, bồi dưỡng, trí thức hóa giai cấp công nhân"
+  },
+  {
+    "question": "Sứ mệnh lịch sử của giai cấp công nhân Việt Nam được thể hiện trên mấy phương diện chính?",
+    "options": [
+      "Hai phương diện: kinh tế và chính trị – xã hội",
+      "Ba phương diện: kinh tế, chính trị – xã hội, văn hóa – tư tưởng",
+      "Bốn phương diện: kinh tế, chính trị, văn hóa, ngoại giao",
+      "Một phương diện: chính trị – xã hội"
+    ],
+    "answer": "Ba phương diện: kinh tế, chính trị – xã hội, văn hóa – tư tưởng"
+  }
+]
