@@ -249,7 +249,7 @@ const Milestone2 = ({ sectionRef }: Milestone2Props) => {
                     style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
                   >
                     {images.map((image, index) => (
-                      <div key={index} className="w-full flex-shrink-0">
+                      <div key={index} className="relative w-full flex-shrink-0">
                         <img 
                           src={image.src} 
                           alt={image.alt}
