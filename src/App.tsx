@@ -14,7 +14,6 @@ import Conclusion from './components/Conclusion';
 import Review from './components/Review';
 import Footer from './components/Footer';
 import StoryDetail from './components/StoryDetail';
-import NextSectionButton from './components/NextSectionButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
