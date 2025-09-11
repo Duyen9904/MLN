@@ -287,8 +287,8 @@ const Header = () => {
         preload="metadata"
         className="hidden"
       >
-        <source src="/src/assets/videoplayback.mp4" type="audio/mp4" />
-        <source src="/src/assets/videoplayback.mp4" type="video/mp4" />
+        <source src="/src/components/videoplayback.mp4" type="audio/mp4" />
+        <source src="/src/components/videoplayback.mp4" type="video/mp4" />
         Trình duyệt của bạn không hỗ trợ phát âm thanh.
       </audio>
 
