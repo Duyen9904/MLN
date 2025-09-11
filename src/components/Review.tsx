@@ -21,7 +21,7 @@ const Review = ({ sectionRef }: ReviewProps) => {
 
   // Load quiz.json via asset URL to avoid TS resolveJsonModule requirements
   useEffect(() => {
-    const quizUrl = new URL('../assets/quiz.json', import.meta.url).href;
+    const quizUrl = new URL('/quiz.json', import.meta.url).href;
     fetch(quizUrl)
       .then((res) => res.json())
       .then((data: QuizItem[]) => {

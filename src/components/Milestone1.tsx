@@ -3,8 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Cog, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, ExternalLink, Share2 } from 'lucide-react';
-import khaithacthanGd1 from '../assets/khaithacthan-gd1.jpg';
-import nhamaydetnamdinh from '../assets/nhamaydetnamdinh.jpg';
+import khaithacthanGd1 from '/khaithacthan-gd1.jpg';
+import nhamaydetnamdinh from '/nhamaydetnamdinh.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 

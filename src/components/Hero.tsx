@@ -2,46 +2,29 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// Removed icon imports as they are no longer needed
-import phapthuoc from '../assets/phapthuoc.jpg';
+import phapthuoc from '/phapthuoc.jpg';
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
-// ScrambleText effect function for Vietnamese text
-const scrambleText = (element: HTMLElement | null, finalText: string, duration = 1.5, delay = 0) => {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-  const originalText = finalText;
-  let currentText = "";
-  
-  gsap.to({}, {
-    duration: duration,
-    delay: delay,
-    ease: "power2.out",
-    onUpdate: function() {
-      const progress = this.progress();
-      const targetLength = Math.floor(progress * originalText.length);
-      currentText = "";
-      
-      for (let i = 0; i < originalText.length; i++) {
-        if (i < targetLength) {
-          currentText += originalText[i];
-        } else if (i < targetLength + Math.floor((1 - progress) * 8)) {
-          currentText += chars[Math.floor(Math.random() * chars.length)];
-        } else {
-          currentText += " ";
-        }
-      }
-      
-      if (element) {
-        element.textContent = currentText;
-      }
-    },
-    onComplete: function() {
-      if (element) {
-        element.textContent = originalText;
-      }
-    }
+// Word-by-word typewriter effect
+const typeWords = (
+  element: HTMLElement | null,
+  fullText: string,
+  options?: { wordDelay?: number; initialDelay?: number }
+) => {
+  if (!element) return;
+  const wordDelay = options?.wordDelay ?? 0.15; // seconds between words
+  const initialDelay = options?.initialDelay ?? 0;
+  const words = fullText.split(/\s+/);
+  // Ensure we start empty
+  element.textContent = '';
+  const tl = gsap.timeline({ delay: initialDelay });
+  words.forEach((_, index) => {
+    tl.call(() => {
+      element.textContent = words.slice(0, index + 1).join(' ');
+    }, undefined, index * wordDelay);
   });
+  return tl;
 };
 
 const Hero = () => {
@@ -77,7 +60,7 @@ const Hero = () => {
         ease: "back.out(1.7)"
       }, "-=1.2");
 
-      // Chapter number entrance with enhanced animation
+      // Chapter number entrance with word-by-word typing
       masterTL.to('.hero-chapter', {
         y: 0,
         opacity: 1,
@@ -85,13 +68,11 @@ const Hero = () => {
         duration: 1.2,
         ease: "back.out(1.7)",
         onComplete: () => {
-          if (chapterRef.current) {
-            scrambleText(chapterRef.current, "CHƯƠNG 02", 1.2, 0.3);
-          }
+          typeWords(chapterRef.current, 'CHƯƠNG 02', { wordDelay: 0.18, initialDelay: 0.05 });
         }
       }, "-=0.8");
 
-      // Main title entrance with enhanced animation
+      // Main title entrance with word-by-word typing
       masterTL.to('.hero-main-text', {
         y: 0,
         opacity: 1,
@@ -99,9 +80,8 @@ const Hero = () => {
         duration: 1.8,
         ease: "back.out(1.7)",
         onComplete: () => {
-          if (titleRef.current) {
-            scrambleText(titleRef.current, "SỨ MỆNH LỊCH SỬ", 2.5, 0);
-          }
+          const target = titleRef.current?.querySelector('span') as HTMLElement | null;
+          typeWords(target, 'SỨ MỆNH LỊCH SỬ', { wordDelay: 0.22, initialDelay: 0 });
         }
       }, "-=0.4")
       .to('.hero-subtitle-text', {
@@ -111,9 +91,7 @@ const Hero = () => {
         duration: 1.5,
         ease: "back.out(1.7)",
         onComplete: () => {
-          if (subtitleRef.current) {
-            scrambleText(subtitleRef.current, "GIAI CẤP CÔNG NHÂN VIỆT NAM", 3.0, 0.5);
-          }
+          typeWords(subtitleRef.current, 'GIAI CẤP CÔNG NHÂN VIỆT NAM', { wordDelay: 0.16, initialDelay: 0.05 });
         }
       }, "-=0.8")
       .to('.hero-description', {

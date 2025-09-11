@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Cog, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
-import giaidoan3 from '../assets/giaidoan3.jpg';
+import giaidoan3 from '/giaidoan3.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
