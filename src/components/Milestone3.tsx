@@ -23,15 +23,15 @@ const Milestone3 = ({ sectionRef }: Milestone3Props) => {
     icon: <Cog className="w-6 h-6" />
   };
 
-  const images = [
-    {
-      id: "giaidoan3",
-      src: giaidoan3,
-      alt: "Giai đoạn 3 - 35 năm đổi mới",
-      caption: "Công cuộc đổi mới và phát triển",
-      imageUrl: "https://www.phunuonline.com.vn/khi-nha-may-theo-cong-nhan-ve-tinh-a1459797.html"
-    }
-  ];
+  // const images = [
+  //   {
+  //     id: "giaidoan3",
+  //     src: giaidoan3,
+  //     alt: "Giai đoạn 3 - 35 năm đổi mới",
+  //     caption: "Công cuộc đổi mới và phát triển",
+  //     imageUrl: "https://www.phunuonline.com.vn/khi-nha-may-theo-cong-nhan-ve-tinh-a1459797.html"
+  //   }
+  // ];
 
   
   useEffect(() => {

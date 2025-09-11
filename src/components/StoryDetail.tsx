@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowLeft, Quote, Calendar, MapPin, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Quote, Calendar, MapPin, Star} from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { storyImages} from '../data/storyData';
 
@@ -11,7 +11,6 @@ const StoryDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const story = storyImages.find(img => img.id === id);
@@ -87,31 +86,10 @@ const StoryDetail = () => {
         yoyo: true,
         ease: "sine.inOut"
       });
-
-      // Image carousel auto-slide
-      if (story.additionalImages && story.additionalImages.length > 0) {
-        const autoSlideInterval = setInterval(() => {
-          setCurrentImageIndex((prev) => (prev + 1) % (story.additionalImages?.length || 1));
-        }, 3000);
-
-        return () => clearInterval(autoSlideInterval);
-      }
     }, containerRef);
 
     return () => ctx.revert();
   }, [isLoading, story]);
-
-  const nextImage = () => {
-    if (story?.additionalImages) {
-      setCurrentImageIndex((prev) => (prev + 1) % story.additionalImages!.length);
-    }
-  };
-
-  const prevImage = () => {
-    if (story?.additionalImages) {
-      setCurrentImageIndex((prev) => (prev - 1 + story.additionalImages!.length) % story.additionalImages!.length);
-    }
-  };
 
   if (isLoading) {
     return (
@@ -236,7 +214,6 @@ const StoryDetail = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   );
