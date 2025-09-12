@@ -10,10 +10,6 @@ const AIUsage = ({ sectionRef }: AIUsageProps) => {
           Phụ lục: Sử dụng AI (AI Usage)
         </h2>
 
-        <p className="text-[color:rgba(239,230,213,0.85)] leading-relaxed mb-6">
-          Mục tiêu: minh bạch hoá việc dùng AI, liệt kê công cụ, prompt, kết quả, phần chỉnh sửa; và kiểm chứng với nguồn chính thống (giáo trình LLCT, nghị quyết, văn bản pháp luật). AI chỉ đóng vai trò hỗ trợ.
-        </p>
-
         <div className="grid grid-cols-1 gap-6">
           <div className="bg-[rgba(59,47,47,0.5)] rounded-xl p-6 border border-[color:rgba(166,124,82,0.25)]">
             <h3 className="text-xl font-bold text-[var(--vintage-cream)] mb-3">Bảng kê khai</h3>
@@ -37,7 +33,7 @@ const AIUsage = ({ sectionRef }: AIUsageProps) => {
                     <td className="py-3 pr-4 align-top">“Tóm tắt chương X, nhấn mạnh khái niệm Y, giữ thuật ngữ gốc VN”</td>
                     <td className="py-3 pr-4 align-top">5–7 ý chính, sơ đồ khái niệm</td>
                     <td className="py-3 pr-4 align-top">Chuẩn hóa thuật ngữ, bổ sung ví dụ VN, chỉnh logic</td>
-                    <td className="py-3 pr-4 align-top">Đối chiếu giáo trình LLCT [Tác giả, NXB, năm, tr.xx], Nghị quyết [số, năm]</td>
+                    <td className="py-3 pr-4 align-top">Đối chiếu giáo trình Chủ Nghĩa Xã Hội Khoa Học 2021</td>
                     <td className="py-3 align-top">Hỗ trợ</td>
                   </tr>
                   <tr>
@@ -64,38 +60,16 @@ const AIUsage = ({ sectionRef }: AIUsageProps) => {
           </div>
 
           <div className="bg-[rgba(59,47,47,0.5)] rounded-xl p-6 border border-[color:rgba(166,124,82,0.25)]">
-            <h3 className="text-xl font-bold text-[var(--vintage-cream)] mb-3">Quy trình kiểm chứng</h3>
-            <ol className="list-decimal pl-6 space-y-2 text-[color:rgba(239,230,213,0.9)]">
-              <li>Xác định mệnh đề do AI đưa ra.</li>
-              <li>Đối chiếu với giáo trình LLCT, nghị quyết, văn bản pháp luật (trang/điều cụ thể).</li>
-              <li>Ghi kết quả: Phù hợp/Chưa phù hợp/Phần nào.</li>
-              <li>Nếu chưa phù hợp: sửa nội dung và bổ sung trích dẫn.</li>
-              <li>Lưu bằng chứng: ảnh trang sách, link văn bản, số điều/khoản.</li>
-            </ol>
-          </div>
-
-          <div className="bg-[rgba(59,47,47,0.5)] rounded-xl p-6 border border-[color:rgba(166,124,82,0.25)]">
             <h3 className="text-xl font-bold text-[var(--vintage-cream)] mb-3">Ứng dụng sáng tạo (AI hỗ trợ)</h3>
             <ul className="list-disc pl-6 space-y-2 text-[color:rgba(239,230,213,0.9)]">
               <li>Sơ đồ/Đồ họa: AI gợi ý khung; SV chỉnh thuật ngữ, bố cục.</li>
               <li>Quiz: AI đề xuất câu hỏi; SV biên tập độ khó, kiểm chứng đáp án.</li>
-              <li>Video: AI gợi ý kịch bản; SV quay/biên tập, chèn trích dẫn nguồn.</li>
-              <li>Chatbot/FAQ: AI gợi ý câu hỏi; SV viết đáp án chuẩn theo LLCT.</li>
             </ul>
-          </div>
-
-          <div className="bg-[rgba(59,47,47,0.5)] rounded-xl p-6 border border-[color:rgba(166,124,82,0.25)]">
-            <h3 className="text-xl font-bold text-[var(--vintage-cream)] mb-3">Checklist liêm chính (3 dấu hiệu)</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-[color:rgba(239,230,213,0.9)]">
-              <label className="flex items-center space-x-2"><input type="checkbox" className="form-checkbox" /> <span>Cam kết bằng văn bản</span></label>
-              <label className="flex items-center space-x-2"><input type="checkbox" className="form-checkbox" /> <span>Phân định AI vs SV</span></label>
-              <label className="flex items-center space-x-2"><input type="checkbox" className="form-checkbox" /> <span>Đối chiếu nguồn chính thống</span></label>
-            </div>
           </div>
         </div>
 
         <p className="mt-6 text-xs text-[color:rgba(239,230,213,0.6)]">
-          Công cụ đã dùng: NotebookLM (tóm tắt sách), GPT (làm rõ khái niệm). Hãy ghi rõ trích dẫn cụ thể khi đối chiếu.
+          Công cụ đã dùng: NotebookLM (tóm tắt sách), GPT (làm rõ khái niệm)
         </p>
       </div>
     </section>
