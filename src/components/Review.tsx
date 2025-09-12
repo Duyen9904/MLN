@@ -70,8 +70,8 @@ const Review = ({ sectionRef }: ReviewProps) => {
   };
 
   return (
-    <section ref={sectionRef} className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[var(--vintage-brown-dark)] to-[var(--vintage-brown)] relative">
-      <div ref={containerRef} className="container mx-auto px-6 py-24 w-full max-w-4xl relative z-10">
+    <section ref={sectionRef} className="py-12 md:py-16 bg-gradient-to-b from-[var(--vintage-brown-dark)] to-[var(--vintage-brown)] relative">
+      <div ref={containerRef} className="container mx-auto px-6 py-8 md:py-10 w-full max-w-4xl relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[var(--vintage-gold)]">Ôn tập nhanh</h2>
 
         {/* Progress */}
