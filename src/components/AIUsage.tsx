@@ -4,7 +4,7 @@ type AIUsageProps = {
 
 const AIUsage = ({ sectionRef }: AIUsageProps) => {
   return (
-    <section id="ai-usage" ref={sectionRef} className="relative px-6 md:px-10 lg:px-16">
+    <section id="ai-usage" ref={sectionRef} className="relative px-6 md:px-10 lg:px-16 mt-8 md:mt-10 mb-8 md:mb-10">
       <div className="max-w-5xl mx-auto bg-[rgba(27,20,15,0.6)] border border-[color:rgba(166,124,82,0.35)] rounded-2xl shadow-xl px-8 md:px-10 py-6 md:py-8">
         <h2 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[var(--vintage-gold)] to-[var(--vintage-tan)] mb-4">
           Phụ lục: Sử dụng AI (AI Usage)
