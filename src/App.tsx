@@ -44,23 +44,27 @@ const App = () => {
         
         sections.forEach((section, sectionIndex) => {
           if (section) {
+            // Set initial state to prevent glitchy fall
+            gsap.set(section, {
+              y: 100,
+              opacity: 0.8
+            });
+
             // Section entrance animation with parallax
-            gsap.fromTo(section, 
-              { 
-                y: 100, 
-                opacity: 0.8,
-                // Avoid scaling the whole section to prevent visual height shrink
-              },
+            gsap.to(section, 
               {
                 y: 0,
                 opacity: 1,
                 duration: 1.2,
                 ease: "power2.out",
+                onComplete: () => {
+                  // Ensure the section stays in its final position
+                  gsap.set(section, { clearProps: "none" });
+                },
                 scrollTrigger: {
                   trigger: section,
                   start: "top 90%",
                   end: "bottom 10%",
-                  // Keep the section state after it has expanded
                   toggleActions: "play none none none",
                   once: true
                 }
@@ -75,7 +79,13 @@ const App = () => {
                 trigger: section,
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 1.5
+                scrub: 1.5,
+                onUpdate: (self) => {
+                  // Prevent glitchy fall by ensuring smooth transitions
+                  if (self.progress === 1) {
+                    gsap.set(section, { clearProps: "none" });
+                  }
+                }
               }
             });
 
@@ -112,25 +122,31 @@ const App = () => {
 
         // Smooth section transitions - enhanced for full screen sections
         gsap.utils.toArray<HTMLElement>('section').forEach((section) => {
-          gsap.fromTo(section,
-            { 
-              opacity: 0,
-              y: 150
+          // Set initial state to prevent glitchy fall
+          gsap.set(section, {
+            opacity: 0,
+            y: 150
+          });
+
+          gsap.to(section, {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            onComplete: () => {
+              // Lock the section in its final position to prevent glitchy fall
+              gsap.set(section, { 
+                clearProps: "none",
+                force3D: true
+              });
             },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1.5,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 85%",
-                // Do not reverse to avoid any collapse effect
-                toggleActions: "play none none none",
-                once: true
-              }
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true
             }
-          );
+          });
         });
 
         // Enhanced floating elements parallax
@@ -196,9 +212,7 @@ const App = () => {
         <Milestone3 sectionRef={milestone3Ref} />
         <Section2 sectionRef={section2Ref} />
         <Section3 sectionRef={section3Ref} />
-        <Conclusion sectionRef={conclusionRef
-
-        } />
+        <Conclusion sectionRef={conclusionRef} />
         
         <Review sectionRef={reviewRef} />
         <AIUsage sectionRef={aiUsageRef} />
