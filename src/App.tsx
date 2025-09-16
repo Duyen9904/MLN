@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 import StoryDetail from './components/StoryDetail';
 import AIUsage from './components/AIUsage';
 import OpeningActivity from './components/OpeningActivity';
-//tessst
+//tessst dddd
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
